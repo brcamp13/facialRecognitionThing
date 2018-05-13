@@ -3,6 +3,8 @@ import Tilt from 'react-tilt'
 import brain from './brain.png';
 import './Logo.css';
 
+//this is just the brain logo in the top left of the application
+//the tilt stuff is from npm and adds a tilting design to the image
 const Logo = () => {
 	return (
 		<div className='ma4 mt0'> 

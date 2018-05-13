@@ -1,5 +1,6 @@
 import React from 'react';
 
+//literally just the sign out button
 const Navigation = () => {
 	return (
 		<nav style={{display: 'flex', justifyContent: 'flex-end'}}>

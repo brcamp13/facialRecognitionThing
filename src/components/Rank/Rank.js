@@ -1,5 +1,6 @@
 import React from 'react';
 
+//will become dynamic, but currently just shows the user's "rank" (how many images they have submitted to the website)
 const Rank = () => {
 	return (
 		<div> 

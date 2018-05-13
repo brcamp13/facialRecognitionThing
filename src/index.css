@@ -5,6 +5,7 @@ body {
   background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
 }
 
+/*makes it so that when you hover over the only button on the page, you get a pointer cursor*/
 button {
 	cursor: pointer;
 }
