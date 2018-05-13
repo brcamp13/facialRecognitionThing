@@ -36,7 +36,8 @@ class App extends Component {
     super();  //must be called since "App" is a sub class of the react class "component" Also needed to use the keyword "this"
     this.state = {
       input: '',
-      imageUrl: ''
+      imageUrl: '', 
+      box: {},
     }
   }
 
@@ -45,19 +46,36 @@ class App extends Component {
       this.setState({input: event.target.value});
   }
 
+  calculateFaceLocation = (data) => {
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById('inputImage');
+    const width = Number(image.width);
+    const height = Number(image.height);
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
+    }
+  }
+
+  displayFaceBox = (box) => {
+    this.setState({box: box})
+  }
+
 //Once the "submit" button is pressed, the imageUrl state becomes whatever the input state was
 //Then, the API will call the Clarifai facial recognition feature and log the result to the console
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input})
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
-    function(response) {
-      // do something with response
-      console.log(response.oputs[0].data.regions[0].region_info.bounding_box);
-    },
-    function(err) {
-      // there was an error
-    }
-    );
+    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+    // do something with response
+    .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))  
+    //so you call the calculate face location which gets the bounds of the box
+   //then, you pass that facebox into the displayFaceBox function which so far only updates the application's "box" state to the facebox bounds of the current image
+
+
+    //if there is an error, then catch and write error info to console
+    .catch(err => console.log(err));
   }
 
 //The below renders all components to the screen (code to do this can be found in "index.js")
@@ -71,7 +89,7 @@ class App extends Component {
         <Logo />
         <Rank />
         <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/> 
-        <FaceRecognition imageUrl={this.state.imageUrl} />
+        <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
       </div>
     );
   }
