@@ -90,7 +90,23 @@ loadUser = (data) => {
     this.setState({imageUrl: this.state.input})
     app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
     // do something with response
-    .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))  
+    .then(response => {
+      if (response) {
+        fetch('htt;://localhost:3000/image', {
+          method: 'post', 
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            id: this.state.user.id
+          })
+        })
+          .then(resonse => response.json())
+          .then(count => {
+            this.setState(Object.assign(this.state.user, { entries: count}))
+          })
+
+      }
+      this.displayFaceBox(this.calculateFaceLocation(response))
+    })  
     //so you call the calculate face location which gets the bounds of the box
    //then, you pass that facebox into the displayFaceBox function which so far only updates the application's "box" state to the facebox bounds of the current image
 
