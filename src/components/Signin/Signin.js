@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//this was turned into a smart component by giving it its own individual state
 class Signin extends React.Component {
 	constructor(props) {
 		super(props);
@@ -28,6 +28,7 @@ class Signin extends React.Component {
 			})
 		})
 			.then(response => response.json())
+			//If the user exists, then load user (update user state in app.js) and set the route to home
 			.then(user => {
 				if (user.id) {
 					this.props.loadUser(user);

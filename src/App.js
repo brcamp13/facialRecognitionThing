@@ -53,13 +53,14 @@ class App extends Component {
     }
   }
 
+//Receives user data from the database and then sets the user state to to the user values
 loadUser = (data) => {
   this.setState({user: {
     id: data.id,
     name: data.name,
     email: data.email,
     entries: data.entries,
-    joines: data.joined
+    joined: data.joined
   }})
 }
 //Function that sets the input state to the value that the user inputted
@@ -89,7 +90,9 @@ loadUser = (data) => {
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input})
     app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-    // do something with response
+    //This function is used when the user presses the button to detect a face
+    //It sends the user id to the server. Then the server locates the user that belongs to the id. 
+    //Then the server increases the count value of the user and returns that
     .then(response => {
       if (response) {
         fetch('htt;://localhost:3000/image', {

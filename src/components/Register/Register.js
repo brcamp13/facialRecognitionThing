@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//This has become a smart component
 class Register extends React.Component {
 	constructor(props) {
 		super(props);
@@ -23,6 +23,7 @@ class Register extends React.Component {
 		this.setState({password: event.target.value})
 	}
 
+//as of right now, this data is given to the server and then a new user is hardcoded to the "database" (an array). This will change soon (when there's an actual database)
 	onSubmitSignIn = () => {
 		fetch('http://localhost:3000/register', {
 			method: 'post', 
