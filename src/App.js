@@ -92,23 +92,24 @@ loadUser = (data) => {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
-          input: this.state.input
+            input: this.state.input
         })
       })
-    .then(response => response.json())
-    .then(response => {
+      .then(response => response.json())
+      .then(response => {
       if (response) {
-        fetch('htt;://localhost:3000/image', {
+        fetch('http://localhost:3000/image', {
           method: 'put', 
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             id: this.state.user.id
           })
         })
-          .then(resonse => response.json())
-          .then(count => {
-            this.setState(Object.assign(this.state.user, { entries: count}))
-          })
+        .then(response => response.json())
+        .then(count => {
+          this.setState(Object.assign(this.state.user, { entries: count}))
+        })
+        .catch(console.log)
 
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
