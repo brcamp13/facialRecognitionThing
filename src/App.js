@@ -88,7 +88,7 @@ loadUser = (data) => {
     //This function is used when the user presses the button to detect a face
     //It sends the user id to the server. Then the server locates the user that belongs to the id. 
     //Then the server increases the count value of the user and returns that
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://peaceful-gorge-80971.herokuapp.com/imageurl', {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
@@ -98,7 +98,7 @@ loadUser = (data) => {
       .then(response => response.json())
       .then(response => {
       if (response) {
-        fetch('http://localhost:3000/image', {
+        fetch('https://peaceful-gorge-80971.herokuapp.com:3000/image', {
           method: 'put', 
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({

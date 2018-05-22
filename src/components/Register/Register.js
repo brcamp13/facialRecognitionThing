@@ -25,7 +25,7 @@ class Register extends React.Component {
 
 //as of right now, this data is given to the server and then a new user is hardcoded to the "database" (an array). This will change soon (when there's an actual database)
 	onSubmitSignIn = () => {
-		fetch('http://localhost:3000/register', {
+		fetch('https://peaceful-gorge-80971.herokuapp.com/register', {
 			method: 'post', 
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
