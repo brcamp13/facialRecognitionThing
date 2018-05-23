@@ -6,6 +6,8 @@
 
 ## Overall, quite simplistic and not production ready, and not really useful, but was a valuable learning experience.
 
+# Also, sessions/cookies are not implemented, so if you refresh the page, or leave and then come back later, you will have to login again
+
 Credit goes to Andrei Neagoie for the Udemy course that walked through the creation of this project.
 
 Looking to expand upon these concepts to create a more sophisticated full-stack web application. Stay tuned.
