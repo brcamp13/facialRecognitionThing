@@ -98,7 +98,7 @@ loadUser = (data) => {
       .then(response => response.json())
       .then(response => {
       if (response) {
-        fetch('https://peaceful-gorge-80971.herokuapp.com:3000/image', {
+        fetch('https://peaceful-gorge-80971.herokuapp.com/image', {
           method: 'put', 
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
