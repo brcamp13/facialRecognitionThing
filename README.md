@@ -6,7 +6,7 @@
 
 ## Overall, quite simplistic and not production ready, and not really useful, but was a valuable learning experience.
 
-# Also, sessions/cookies are not implemented, so if you refresh the page, or leave and then come back later, you will have to login again
+# Also, sessions/cookies are not implemented, so if you refresh the page, or leave and then come back later, you will have to log in again.
 
 Credit goes to Andrei Neagoie for the Udemy course that walked through the creation of this project.
 
